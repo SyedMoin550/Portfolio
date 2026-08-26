@@ -2810,4 +2810,68 @@ BLOG Pagination
   font-weight: 500;
 }
 
+/* ====================================
+   HERO TEXT ANIMATIONS
+   ==================================== */
+.mh-home .mh-header-info .hero-name {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #ffffff 40%, #00bfa5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(0, 191, 165, 0.2);
+  transition: all 0.3s ease;
+}
+
+.mh-home .mh-header-info .hero-subheading {
+  font-size: 26px;
+  line-height: 36px;
+  min-height: 40px;
+  margin-bottom: 25px;
+  color: #f3f4f6;
+  font-weight: 400;
+}
+
+.mh-home .mh-header-info .hero-subheading .static-prefix {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.mh-home .mh-header-info .hero-subheading .dynamic-typed-text {
+  color: #00bfa5;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.45);
+  padding-bottom: 2px;
+  text-shadow: 0 0 16px rgba(0, 191, 165, 0.35);
+  transition: color 0.2s ease;
+}
+
+.mh-home .mh-header-info .hero-subheading .typed-cursor {
+  color: #00bfa5;
+  font-weight: 300;
+  font-size: 28px;
+  margin-left: 2px;
+  display: inline-block;
+  animation: cursor-blink 0.85s infinite;
+  text-shadow: 0 0 8px rgba(0, 191, 165, 0.6);
+  vertical-align: baseline;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media only screen and (max-width: 767px) {
+  .mh-home .mh-header-info .hero-subheading {
+    font-size: 19px;
+    line-height: 28px;
+    min-height: 56px;
+  }
+  .mh-home .mh-header-info .hero-subheading .typed-cursor {
+    font-size: 20px;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
+

@@ -378,6 +378,58 @@
           $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
         }
     
+        /*
+        |======================================
+        | Hero Introduction Dynamic Typewriter
+        |======================================
+        */
+        var typedElement = document.querySelector('.dynamic-typed-text');
+        if (typedElement) {
+            var itemsAttr = typedElement.getAttribute('data-typed-items');
+            if (itemsAttr) {
+                var items = itemsAttr.split(',').map(function(item) {
+                    return item.trim();
+                }).filter(function(item) {
+                    return item.length > 0;
+                });
 
+                if (items.length > 0) {
+                    var currentItemIndex = 0;
+                    var currentCharIndex = items[0].length;
+                    var isDeleting = true;
+                    var typingSpeed = 80;
+                    var deletingSpeed = 40;
+                    var pauseAfterTyping = 2200;
+                    var pauseAfterDeleting = 450;
+
+                    function runTypewriter() {
+                        var currentText = items[currentItemIndex];
+
+                        if (isDeleting) {
+                            typedElement.textContent = currentText.substring(0, currentCharIndex - 1);
+                            currentCharIndex--;
+                        } else {
+                            typedElement.textContent = currentText.substring(0, currentCharIndex + 1);
+                            currentCharIndex++;
+                        }
+
+                        var delay = isDeleting ? deletingSpeed : typingSpeed;
+
+                        if (!isDeleting && currentCharIndex === currentText.length) {
+                            delay = pauseAfterTyping;
+                            isDeleting = true;
+                        } else if (isDeleting && currentCharIndex === 0) {
+                            isDeleting = false;
+                            currentItemIndex = (currentItemIndex + 1) % items.length;
+                            delay = pauseAfterDeleting;
+                        }
+
+                        setTimeout(runTypewriter, delay);
+                    }
+
+                    setTimeout(runTypewriter, 2000);
+                }
+            }
+        }
     
 }(jQuery));
